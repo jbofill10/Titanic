@@ -15,4 +15,23 @@ fig, axs = plt.subplots(1,2)
 
 df[df.Sex=='male'].Survived.value_counts().plot(kind='bar', color=colors['deadalive'], ax=axs[0], title="Men Survival")
 df[df.Sex=='female'].Survived.value_counts().plot(kind='bar',color=colors['alivedead'], ax=axs[1], title="Women Survival")
+
+
+# Create subplot for Pclasses
+fig, axs = plt.subplots(1,3)
+df[df.Pclass==1].Survived.value_counts().plot(kind='bar', color=colors['alivedead'], ax=axs[0], title='Pclass 1 Survival')
+df[df.Pclass==2].Survived.value_counts().plot(kind='bar', color=colors['deadalive'], ax=axs[1], title='Pclass 2 Survival')
+df[df.Pclass==3].Survived.value_counts().plot(kind='bar', color=colors['deadalive'], ax=axs[2], title='Pclass 3 Survival')
+
+# Subplot for male pclass plot
+fig, axs = plt.subplots(1,3)
+df[(df.Pclass==1) & (df.Sex=='male')].Survived.value_counts().plot(kind='bar', color=colors['deadalive'], ax=axs[0], title='Pclass 1 Male Survival')
+df[(df.Pclass==2) & (df.Sex=='male')].Survived.value_counts().plot(kind='bar', color=colors['deadalive'], ax=axs[1], title='Pclass 2 Male Survival')
+df[(df.Pclass==3) & (df.Sex=='male')].Survived.value_counts().plot(kind='bar', color=colors['deadalive'], ax=axs[2], title='Pclass 3 Male Survival')
+
+fig, axs = plt.subplots(1,3)
+df[(df.Pclass==1) & (df.Sex=='female')].Survived.value_counts().plot(kind='bar', color=colors['alivedead'], ax=axs[0], title='Pclass 1 Women Survival')
+df[(df.Pclass==2) & (df.Sex=='female')].Survived.value_counts().plot(kind='bar', color=colors['alivedead'], ax=axs[1], title='Pclass 2 Women Survival')
+df[(df.Pclass==3) & (df.Sex=='female')].Survived.value_counts().plot(kind='bar', color=colors['alivedead'], ax=axs[2], title='Pclass 3 Women Survival')
+
 plt.show()
